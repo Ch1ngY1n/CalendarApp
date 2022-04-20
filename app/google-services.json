@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "631244217538",
+    "project_id": "calendarapp-50493",
+    "storage_bucket": "calendarapp-50493.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:631244217538:android:28be623a2b4d924e39af5b",
+        "android_client_info": {
+          "package_name": "codewithcal.au.calendarappexample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "631244217538-ht5ilk40rs9e6pubb1vti9r0mbgfhbub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuqwv47qst_SycyLxHoE-3h03mDoqXS_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "631244217538-ht5ilk40rs9e6pubb1vti9r0mbgfhbub.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -30,7 +30,6 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
         setWeekView()
         dayOfToday()
         onclickMenu()
-        addEvent()
     }
     private fun dayOfToday(){
         //今天日期
@@ -68,13 +67,9 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
             drawerLayout.closeDrawers()
         }
     }
-    private fun addEvent(){
-        binding.eventAddMain.eventAddButton.setOnClickListener {
-            startActivity(Intent(this, EventEditActivity::class.java))
-        }
+    fun addEvent(view: View?){
+        startActivity(Intent(this, EventEditActivity::class.java))
     }
-
-
 
     private fun setWeekView() {
         binding.monthYearTV.text = monthYearFromDate(CalendarUtils.selectedDate!!)

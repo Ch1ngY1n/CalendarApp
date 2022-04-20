@@ -32,7 +32,6 @@ class DailyCalendarActivity : AppCompatActivity() {
         setContentView(binding.root)
         dayOfToday()
         onclickMenu()
-        addEvent()
     }
 
     override fun onResume() {
@@ -75,10 +74,8 @@ class DailyCalendarActivity : AppCompatActivity() {
             drawerLayout.closeDrawers()
         }
     }
-    private fun addEvent(){
-        binding.eventAddMain.eventAddButton.setOnClickListener {
+     fun addEvent(view: View?){
             startActivity(Intent(this, EventEditActivity::class.java))
-        }
     }
 
     private fun setDayView() {

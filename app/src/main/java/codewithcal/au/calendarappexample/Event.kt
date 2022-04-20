@@ -4,7 +4,7 @@ import java.time.LocalDate
 import java.time.LocalTime
 import java.util.ArrayList
 
-class Event(var name: String, var date: LocalDate, var time: LocalTime) {
+class Event(var name: String, var date: LocalDate, var time: LocalTime,var remark:String) {
 
     companion object {
         @JvmField

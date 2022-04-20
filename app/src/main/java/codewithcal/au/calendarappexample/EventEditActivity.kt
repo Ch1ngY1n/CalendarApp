@@ -29,15 +29,18 @@ class EventEditActivity : AppCompatActivity() {
 
     fun saveEventAction(view: View?) {
         var eventName : String
+        var remark : String
         if (binding.eventNameET.text.isEmpty()){
             binding.eventNameET.setText("我的活動")
             eventName = binding.eventNameET.text.toString()
-            val newEvent = Event(eventName, CalendarUtils.selectedDate!!, time!!)
+            remark = binding.eventRemarkET.text.toString()
+            val newEvent = Event(eventName, CalendarUtils.selectedDate!!, time!!,remark)
             Event.eventsList.add(newEvent)
             finish()
         } else{
             eventName = binding.eventNameET.text.toString()
-            val newEvent = Event(eventName, CalendarUtils.selectedDate!!, time!!)
+            remark = binding.eventRemarkET.text.toString()
+            val newEvent = Event(eventName, CalendarUtils.selectedDate!!, time!!,remark)
             Event.eventsList.add(newEvent)
             finish()
         }

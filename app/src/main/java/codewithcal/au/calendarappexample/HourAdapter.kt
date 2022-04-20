@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import codewithcal.au.calendarappexample.R
 import android.widget.TextView
+import codewithcal.au.calendarappexample.databinding.HourCellBinding
 import java.time.LocalTime
 import java.util.ArrayList
 

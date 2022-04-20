@@ -4,7 +4,6 @@ import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.LayoutInflater
-import android.view.View
 import java.time.LocalDate
 import java.util.ArrayList
 

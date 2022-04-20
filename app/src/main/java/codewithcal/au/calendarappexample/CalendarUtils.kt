@@ -1,9 +1,6 @@
 package codewithcal.au.calendarappexample
 
-import java.time.DayOfWeek
-import java.time.LocalDate
-import java.time.LocalTime
-import java.time.YearMonth
+import java.time.*
 import java.time.format.DateTimeFormatter
 import java.util.ArrayList
 
@@ -36,6 +33,11 @@ object CalendarUtils {
     @JvmStatic
     fun monthYearFromDate(date: LocalDate): String {
         val formatter = DateTimeFormatter.ofPattern("MMMM yyyy")
+        return date.format(formatter)
+    }
+    @JvmStatic
+    fun YearFromMonth(date: LocalDate): String {
+        val formatter = DateTimeFormatter.ofPattern("yyyy")
         return date.format(formatter)
     }
 
