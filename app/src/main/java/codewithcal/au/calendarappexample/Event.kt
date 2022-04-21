@@ -10,8 +10,8 @@ class Event(var name: String, var date: LocalDate, var time: LocalTime,var remar
         @JvmField
         var eventsList = ArrayList<Event>()
         @JvmStatic
-        fun eventsForDate(date: LocalDate): ArrayList<Event?> {
-            val events = ArrayList<Event?>()
+        fun eventsForDate(date: LocalDate): ArrayList<Event> {
+            val events = ArrayList<Event>()
             for (event in eventsList) {
                 if (event.date == date) events.add(event)
             }
