@@ -19,9 +19,6 @@ internal class CalendarAdapter(
         val view = inflater.inflate(R.layout.calendar_cell, parent, false)
         val layoutParams = view.layoutParams
 
-        val dailyEvents: ArrayList<Event> = Event.eventsForDate(
-            CalendarUtils.selectedDate!!)
-        setEvents(view, dailyEvents)
 
         if (days.size > 15) //month view
             layoutParams.height = (parent.height * 0.166666666).toInt() else  // week view
@@ -42,43 +39,6 @@ internal class CalendarAdapter(
 
     }
 
-    private fun setEvents(convertView: View?, events: ArrayList<Event>) {
-        val event1 = convertView!!.findViewById<TextView>(R.id.cell_event1)
-        val event2 = convertView.findViewById<TextView>(R.id.cell_event2)
-        val event3 = convertView.findViewById<TextView>(R.id.cell_event3)
-        if (events.size == 0) {
-            hideEvent(event1)
-            hideEvent(event2)
-            hideEvent(event3)
-        } else if (events.size == 1) {
-            setEvent(event1, events[0])
-            hideEvent(event2)
-            hideEvent(event3)
-        } else if (events.size == 2) {
-            setEvent(event1, events[0])
-            setEvent(event2, events[1])
-            hideEvent(event3)
-        } else if (events.size == 3) {
-            setEvent(event1, events[0])
-            setEvent(event2, events[1])
-            setEvent(event3, events[2])
-        } else {
-            setEvent(event1, events[0])
-            setEvent(event2, events[1])
-            event3.visibility = View.VISIBLE
-            var eventsNotShown = (events.size - 2).toString()
-            eventsNotShown += " More Events"
-            event3.text = eventsNotShown
-        }
-    }
-    private fun setEvent(textView: TextView, event: Event) {
-        textView.text = event.name
-        textView.visibility = View.VISIBLE
-    }
-
-    private fun hideEvent(tv: TextView) {
-        tv.visibility = View.INVISIBLE
-    }
 
     override fun getItemCount(): Int {
         return days.size
