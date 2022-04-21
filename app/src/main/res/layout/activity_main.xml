@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="週日"
-                android:textColor="@color/gray"
+                android:textColor="@color/red"
                 android:textAlignment="center"
                 android:textSize="16sp"/>
 
@@ -124,7 +124,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="週六"
-                android:textColor="@color/gray"
+                android:textColor="@color/yellow"
                 android:textAlignment="center"
                 android:textSize="16sp"/>
         </LinearLayout>
@@ -132,7 +132,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/calendarRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginBottom="?actionBarSize"/>
     </LinearLayout>
     <include
         android:id="@+id/event_add_main"

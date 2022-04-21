@@ -11,9 +11,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import android.content.Intent
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearSnapHelper
 import codewithcal.au.calendarappexample.databinding.ActivityWeekViewBinding
+import com.bumptech.glide.Glide
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.navigation.NavigationView
 import java.time.LocalDate
 import java.util.*
@@ -43,6 +48,16 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
             setWeekView()
         }
     }
+    override fun onStart() {
+        super.onStart()
+        //抓取google登入資料
+        val account = GoogleSignIn.getLastSignedInAccount(this)
+        val headerLayout: View = binding.navDrawer.navDrawer.getHeaderView(0)
+        val DrawerUserName: TextView = headerLayout.findViewById(R.id.profile_name)
+        DrawerUserName.setText(account?.displayName)
+        val DrawerUserPhoto:ImageView = headerLayout.findViewById(R.id.profile_image)
+        Glide.with(this).load(account?.photoUrl).into(DrawerUserPhoto)
+    }
     private fun onclickMenu(){
         //側邊選單
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout_week)
@@ -51,6 +66,11 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
         navView.itemIconTintList = null
         imgMenu.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
+        }
+        //選單點擊(年)
+        binding.navDrawer.BTNMainYear.setOnClickListener {
+            startActivity(Intent(this,YearViewActivity::class.java))
+            drawerLayout.closeDrawers()
         }
         //選單點擊(週)
         binding.navDrawer.BTNMainWeek.setOnClickListener {
@@ -106,14 +126,11 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
             CalendarUtils.selectedDate!!
         )
         val eventAdapter = EventAdapter(applicationContext, dailyEvents)
+
+        binding.eventListView.setOnItemClickListener { adapterView, view, i, l ->
+            val msg = eventAdapter.getItem(i)
+        }
         binding.eventListView.adapter = eventAdapter
     }
 
-    fun newEventAction(view: View?) {
-        startActivity(Intent(this, EventEditActivity::class.java))
-    }
-
-    fun dailyAction(view: View?) {
-        startActivity(Intent(this, DailyCalendarActivity::class.java))
-    }
 }

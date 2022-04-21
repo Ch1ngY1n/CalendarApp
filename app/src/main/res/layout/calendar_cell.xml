@@ -19,7 +19,5 @@
             android:textColor="@color/white"
             android:textSize="10sp"
             android:gravity="center" />
-        
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

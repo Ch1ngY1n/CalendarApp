@@ -1,5 +1,6 @@
 package codewithcal.au.calendarappexample
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
@@ -16,20 +17,21 @@ internal class CalendarAdapter(
         val view = inflater.inflate(R.layout.calendar_cell, parent, false)
         val layoutParams = view.layoutParams
         if (days.size > 15) //month view
-            layoutParams.height = (parent.height * 0.146666666).toInt() else  // week view
+            layoutParams.height = (parent.height * 0.166666666).toInt() else  // week view
             layoutParams.height = parent.height
         return CalendarViewHolder(view, onItemListener, days)
     }
 
+
     override fun onBindViewHolder(holder: CalendarViewHolder, position: Int) {
         val date = days[position]
-        if (date != null) {
-            holder.dayOfMonth.text = date.dayOfMonth.toString()
-        }
+        holder.dayOfMonth.text = date.dayOfMonth.toString()
         if (date == CalendarUtils.selectedDate) holder.parentView.setBackgroundResource(R.drawable.select_bk)
-        if (date!!.month == CalendarUtils.selectedDate!!.month) holder.dayOfMonth.setTextColor(Color.WHITE) else holder.dayOfMonth.setTextColor(
-            Color.GRAY
-        )
+        if (date.month == CalendarUtils.selectedDate!!.month) holder.dayOfMonth.setTextColor(Color.WHITE) else holder.dayOfMonth.setTextColor(Color.GRAY)
+        if (date.month != CalendarUtils.selectedDate!!.month) {
+            holder.parentView.setBackgroundResource(R.color.deep_gray)
+            holder.dayOfMonth.setText("")
+        }
     }
 
     override fun getItemCount(): Int {

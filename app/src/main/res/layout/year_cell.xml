@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/deep_gray"
+    android:layout_margin="10dp"
+    android:padding="2dp"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+        <TextView
+            android:id="@+id/cellMonthText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1月"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:gravity="center" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="日"
+                    android:textColor="@color/red"
+                    android:textAlignment="center"
+                    android:textSize="10sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="一"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:textSize="10sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="二"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:textSize="10sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="三"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:textSize="10sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="四"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:textSize="10sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="五"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:textSize="10sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="六"
+                    android:textColor="@color/yellow"
+                    android:textAlignment="center"
+                    android:textSize="10sp"/>
+        </LinearLayout>
+
+
+</LinearLayout>

@@ -17,6 +17,25 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingBottom="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/BTN_main_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:drawableLeft="@drawable/menu_year"
+                android:drawablePadding="10dp"
+                android:text="年"
+                android:gravity="start"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,7 +46,7 @@
                 android:id="@+id/BTN_main_month"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:drawableLeft="@drawable/menu_month"
                 android:drawablePadding="10dp"
@@ -121,25 +140,6 @@
                 android:drawableLeft="@drawable/menu_delete"
                 android:drawablePadding="10dp"
                 android:text="垃圾桶"
-                android:gravity="start"
-                android:padding="10dp"
-                android:textSize="15sp"
-                android:textColor="@color/white"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/BTN_main_profile_edit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:drawableLeft="@drawable/menu_profile_edit"
-                android:drawablePadding="10dp"
-                android:text="編輯個人資料"
                 android:gravity="start"
                 android:padding="10dp"
                 android:textSize="15sp"

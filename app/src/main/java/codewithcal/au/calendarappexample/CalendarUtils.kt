@@ -20,7 +20,7 @@ object CalendarUtils {
 
     @JvmStatic
     fun formattedTime(time: LocalTime): String {
-        val formatter = DateTimeFormatter.ofPattern("a  hh:mm:ss")
+        val formatter = DateTimeFormatter.ofPattern("hh:mm:ss")
         return time.format(formatter)
     }
 

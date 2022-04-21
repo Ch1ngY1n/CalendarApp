@@ -24,6 +24,7 @@ class CalendarViewHolder internal constructor(
         parentView = itemView.findViewById(R.id.parentView)
         dayOfMonth = itemView.findViewById(R.id.cellDayText)
 
+
         this.onItemListener = onItemListener
         itemView.setOnClickListener(this)
         this.days = days

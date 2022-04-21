@@ -28,6 +28,7 @@ import java.util.*
 class MainActivity : AppCompatActivity(), OnItemListener {
     private lateinit var binding: ActivityMainBinding
     lateinit var mGoogleSignInClient: GoogleSignInClient
+    private var flag = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -73,6 +74,11 @@ class MainActivity : AppCompatActivity(), OnItemListener {
         navView.itemIconTintList = null
         imgMenu.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
+        }
+        //選單點擊(年)
+        binding.navDrawer.BTNMainYear.setOnClickListener {
+            startActivity(Intent(this,YearViewActivity::class.java))
+            drawerLayout.closeDrawers()
         }
         //選單點擊(週)
         binding.navDrawer.BTNMainWeek.setOnClickListener {
@@ -129,14 +135,8 @@ class MainActivity : AppCompatActivity(), OnItemListener {
     }
 
     override fun onItemClick(position: Int, date: LocalDate?) {
-        if (date != null) {
-            val imm: InputMethodManager =
-                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(binding.eventAddMain.eventAddEdit.getWindowToken(), 0)
-            binding.eventAddMain.eventAddEdit.clearFocus()
             CalendarUtils.selectedDate = date
             setMonthView()
-        }
     }
 
 //    fun weeklyAction(view: View?) {

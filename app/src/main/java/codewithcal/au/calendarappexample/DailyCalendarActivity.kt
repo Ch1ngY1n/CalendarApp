@@ -16,6 +16,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import codewithcal.au.calendarappexample.CalendarUtils.selectedDate
 import codewithcal.au.calendarappexample.EventEditActivity
 import codewithcal.au.calendarappexample.databinding.ActivityDailyCalendarBinding
+import com.bumptech.glide.Glide
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.navigation.NavigationView
 import java.time.LocalDate
 import java.time.LocalTime
@@ -50,6 +52,16 @@ class DailyCalendarActivity : AppCompatActivity() {
             setDayView()
         }
     }
+    override fun onStart() {
+        super.onStart()
+        //抓取google登入資料
+        val account = GoogleSignIn.getLastSignedInAccount(this)
+        val headerLayout: View = binding.navDrawer.navDrawer.getHeaderView(0)
+        val DrawerUserName: TextView = headerLayout.findViewById(R.id.profile_name)
+        DrawerUserName.setText(account?.displayName)
+        val DrawerUserPhoto:ImageView = headerLayout.findViewById(R.id.profile_image)
+        Glide.with(this).load(account?.photoUrl).into(DrawerUserPhoto)
+    }
     private fun onclickMenu(){
         //側邊選單
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout_daily)
@@ -58,6 +70,11 @@ class DailyCalendarActivity : AppCompatActivity() {
         navView.itemIconTintList = null
         imgMenu.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
+        }
+        //選單點擊(年)
+        binding.navDrawer.BTNMainYear.setOnClickListener {
+            startActivity(Intent(this,YearViewActivity::class.java))
+            drawerLayout.closeDrawers()
         }
         //選單點擊週
         binding.navDrawer.BTNMainWeek.setOnClickListener {
@@ -115,7 +132,4 @@ class DailyCalendarActivity : AppCompatActivity() {
         setDayView()
     }
 
-    fun newEventAction(view: View?) {
-        startActivity(Intent(this, EventEditActivity::class.java))
-    }
 }
