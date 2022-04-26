@@ -29,7 +29,9 @@
         <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar (1)/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/layout/nav.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar (1)/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/layout/nav_drawar.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar (1)/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/layout/nav_drawer.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/drawable/background_today.xml" value="0.2495" />
         <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/drawable/cursor_color.xml" value="0.2495" />
+        <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/drawable/dialog_bk.xml" value="0.2495" />
         <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/drawable/half_blue_roundshape.xml" value="0.2495" />
         <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/drawable/half_circle.xml" value="0.2495" />
         <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/drawable/heif_circle_left.xml" value="0.2495" />
@@ -47,11 +49,14 @@
         <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/layout/drawer_header.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/layout/event_add.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/layout/event_cell.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/layout/event_dialog.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/layout/hour_cell.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/layout/month_event_cell.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/layout/nav.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/layout/nav_drawer.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/layout/year_cell.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/layout/year_month_cell.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/chingyintung/AndroidStudioProjects/CalendarTutorialAndroidStudio-DailyCalendar/CalendarTutorialAndroidStudio-DailyCalendar/app/src/main/res/layout/year_month_recyclerview.xml" value="0.3536458333333333" />
       </map>
     </option>
   </component>

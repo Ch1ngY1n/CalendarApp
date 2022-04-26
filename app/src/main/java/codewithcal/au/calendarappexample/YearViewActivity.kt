@@ -16,11 +16,14 @@ import codewithcal.au.calendarappexample.CalendarUtils.YearFromMonth
 import codewithcal.au.calendarappexample.databinding.ActivityYearViewBinding
 import com.bumptech.glide.Glide
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.navigation.NavigationView
 import java.time.LocalDate
 
 class YearViewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityYearViewBinding
+    lateinit var mGoogleSignInClient: GoogleSignInClient
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityYearViewBinding.inflate(layoutInflater)
@@ -29,6 +32,9 @@ class YearViewActivity : AppCompatActivity() {
         setYearView()
         onclickMenu()
         dayOfToday()
+        binding.navDrawer.BTNMainSignOut.setOnClickListener {
+            signOut()
+        }
     }
     override fun onStart() {
         super.onStart()
@@ -102,6 +108,21 @@ class YearViewActivity : AppCompatActivity() {
     fun nextMonthAction(view: View?) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate!!.plusYears(1)
         setYearView()
+    }
+    private fun signOut(){
+        //登出
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        mGoogleSignInClient= GoogleSignIn.getClient(this,gso)
+        binding.navDrawer.BTNMainSignOut.setOnClickListener {v->
+            mGoogleSignInClient.signOut().addOnCompleteListener {
+                val intent= Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
     }
 
 }

@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.AdapterView
 import android.widget.TextView
 import java.time.LocalDate
 import java.util.ArrayList
+import kotlin.time.Duration.Companion.days
 
 internal class CalendarAdapter(
     private val days: ArrayList<LocalDate>,
@@ -19,12 +21,12 @@ internal class CalendarAdapter(
         val view = inflater.inflate(R.layout.calendar_cell, parent, false)
         val layoutParams = view.layoutParams
 
-
         if (days.size > 15) //month view
             layoutParams.height = (parent.height * 0.166666666).toInt() else  // week view
             layoutParams.height = parent.height
         return CalendarViewHolder(view, onItemListener, days)
     }
+
 
 
     override fun onBindViewHolder(holder: CalendarViewHolder, position: Int) {
@@ -37,8 +39,8 @@ internal class CalendarAdapter(
             holder.dayOfMonth.setText("")
         }
 
-    }
 
+    }
 
     override fun getItemCount(): Int {
         return days.size
@@ -46,5 +48,6 @@ internal class CalendarAdapter(
 
     interface OnItemListener {
         fun onItemClick(position: Int, date: LocalDate?)
+        fun OnItemLongClick(position: Int,date: LocalDate?)
     }
 }

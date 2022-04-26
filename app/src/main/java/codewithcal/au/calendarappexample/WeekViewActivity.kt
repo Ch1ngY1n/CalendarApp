@@ -1,5 +1,6 @@
 package codewithcal.au.calendarappexample
 
+import android.app.AlertDialog
 import codewithcal.au.calendarappexample.CalendarUtils.monthYearFromDate
 import codewithcal.au.calendarappexample.CalendarUtils.daysInWeekArray
 import codewithcal.au.calendarappexample.Event.Companion.eventsForDate
@@ -114,6 +115,15 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
     override fun onItemClick(position: Int, date: LocalDate?) {
         CalendarUtils.selectedDate = date
         setWeekView()
+    }
+
+    override fun OnItemLongClick(position: Int, date: LocalDate?) {
+        val builder = AlertDialog.Builder(this)
+            .create()
+        val view = layoutInflater.inflate(R.layout.event_dialog,null)
+        builder.setView(view)
+        builder.setCanceledOnTouchOutside(false)
+        builder.show()
     }
 
     override fun onResume() {

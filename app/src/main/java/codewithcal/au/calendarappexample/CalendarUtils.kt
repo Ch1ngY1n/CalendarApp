@@ -2,7 +2,7 @@ package codewithcal.au.calendarappexample
 
 import java.time.*
 import java.time.format.DateTimeFormatter
-import java.util.ArrayList
+import java.util.*
 
 object CalendarUtils {
     @JvmField
@@ -20,7 +20,7 @@ object CalendarUtils {
 
     @JvmStatic
     fun formattedTime(time: LocalTime): String {
-        val formatter = DateTimeFormatter.ofPattern("hh:mm:ss")
+        val formatter = DateTimeFormatter.ofPattern("HH:mm")
         return time.format(formatter)
     }
 

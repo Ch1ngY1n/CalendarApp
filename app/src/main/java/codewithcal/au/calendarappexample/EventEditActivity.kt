@@ -1,19 +1,20 @@
 package codewithcal.au.calendarappexample
 
+import android.app.TimePickerDialog
 import codewithcal.au.calendarappexample.CalendarUtils.formattedDate
 import codewithcal.au.calendarappexample.CalendarUtils.formattedTime
 import androidx.appcompat.app.AppCompatActivity
-import android.widget.EditText
-import android.widget.TextView
 import android.os.Bundle
 import android.view.View
-import codewithcal.au.calendarappexample.R
 import codewithcal.au.calendarappexample.databinding.ActivityEventEditBinding
+import java.text.SimpleDateFormat
 import java.time.LocalTime
+import java.util.*
 
 class EventEditActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEventEditBinding
     private var time: LocalTime? = null
+    var cal = Calendar.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityEventEditBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -23,6 +24,7 @@ class EventEditActivity : AppCompatActivity() {
             CalendarUtils.selectedDate!!
         )
         binding.eventTimeTV.text = "時間 : " + formattedTime(time!!)
+
     }
 
 

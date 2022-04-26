@@ -1,12 +1,16 @@
 package codewithcal.au.calendarappexample
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
+import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -23,6 +27,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.navigation.NavigationView
 import java.time.LocalDate
+import java.time.LocalTime
 import java.util.*
 
 class MainActivity : AppCompatActivity(), OnItemListener {
@@ -108,6 +113,7 @@ class MainActivity : AppCompatActivity(), OnItemListener {
         binding.calendarRecyclerView.adapter = calendarAdapter
     }
 
+
     fun previousMonthAction(view: View?) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate!!.minusMonths(1)
         setMonthView()
@@ -139,7 +145,43 @@ class MainActivity : AppCompatActivity(), OnItemListener {
             setMonthView()
     }
 
+    override fun OnItemLongClick(position: Int, date: LocalDate?) {
+        showDialog()
+    }
+    private fun showDialog(){
+        val yesNoDialog= YesNoDialog(this)
+        yesNoDialog.show()
+    }
+    private fun setHourAdapter() {
+        val hourAdapter = HourAdapter(applicationContext, hourEventList())
+        val month_hourAdapter = findViewById<ListView>(R.id.month_hourListView)
+        month_hourAdapter.adapter = hourAdapter
+    }
+    //0:00-23:00 一整天
+    private fun hourEventList(): ArrayList<HourEvent> {
+        val list = ArrayList<HourEvent>()
+        for (hour in 0..23) {
+            val time = LocalTime.of(hour, 0)
+            val events = CalendarUtils.selectedDate?.let { Event.eventsForDateAndTime(it, time) }
+            val hourEvent = events?.let { HourEvent(time, it) }
+            if (hourEvent != null) {
+                list.add(hourEvent)
+            }
+        }
+        return list
+    }
+
+
+
+
 //    fun weeklyAction(view: View?) {
 //        startActivity(Intent(this, WeekViewActivity::class.java))
 //    }
+}
+class YesNoDialog(context: Context): Dialog(context){
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.event_dialog)
+    }
+
 }

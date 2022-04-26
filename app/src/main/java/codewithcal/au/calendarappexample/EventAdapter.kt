@@ -6,7 +6,6 @@ import android.widget.ArrayAdapter
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
-import codewithcal.au.calendarappexample.R
 import android.widget.TextView
 
 class EventAdapter(context: Context, events: List<Event?>?) :

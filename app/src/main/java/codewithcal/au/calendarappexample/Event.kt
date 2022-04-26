@@ -2,7 +2,7 @@ package codewithcal.au.calendarappexample
 
 import java.time.LocalDate
 import java.time.LocalTime
-import java.util.ArrayList
+import java.util.*
 
 class Event(var name: String, var date: LocalDate, var time: LocalTime,var remark:String) {
 
