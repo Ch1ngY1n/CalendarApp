@@ -22,7 +22,25 @@ class HourAdapter(context: Context, hourEvents: List<HourEvent?>?) :
             LayoutInflater.from(context).inflate(R.layout.hour_cell, parent, false)
         setHour(convertView, event!!.time)
         setEvents(convertView, event.events)
-        return convertView!!
+        val TV_event1 = convertView!!.findViewById<TextView>(R.id.event1)
+        val TV_event2 = convertView.findViewById<TextView>(R.id.event2)
+        val TV_event3 = convertView.findViewById<TextView>(R.id.event3)
+        TV_event1.setOnClickListener {
+            Event.eventsList.removeAt(0)
+            event.events.removeAt(0)
+            setEvents(convertView, event.events)
+        }
+        TV_event2.setOnClickListener {
+            Event.eventsList.removeAt(1)
+            event.events.removeAt(1)
+            setEvents(convertView, event.events)
+        }
+        TV_event3.setOnClickListener {
+            Event.eventsList.removeAt(2)
+            event.events.removeAt(2)
+            setEvents(convertView, event.events)
+        }
+        return convertView
     }
 
     private fun setHour(convertView: View?, time: LocalTime) {
@@ -34,29 +52,34 @@ class HourAdapter(context: Context, hourEvents: List<HourEvent?>?) :
         val event1 = convertView!!.findViewById<TextView>(R.id.event1)
         val event2 = convertView.findViewById<TextView>(R.id.event2)
         val event3 = convertView.findViewById<TextView>(R.id.event3)
+        val event4 = convertView.findViewById<TextView>(R.id.event4)
         if (events.size == 0) {
             hideEvent(event1)
             hideEvent(event2)
             hideEvent(event3)
+            hideEvent(event4)
         } else if (events.size == 1) {
             setEvent(event1, events[0])
             hideEvent(event2)
             hideEvent(event3)
+            hideEvent(event4)
         } else if (events.size == 2) {
             setEvent(event1, events[0])
             setEvent(event2, events[1])
             hideEvent(event3)
+            hideEvent(event4)
         } else if (events.size == 3) {
             setEvent(event1, events[0])
             setEvent(event2, events[1])
             setEvent(event3, events[2])
+            hideEvent(event4)
         } else {
             setEvent(event1, events[0])
             setEvent(event2, events[1])
-            event3.visibility = View.VISIBLE
-            var eventsNotShown = (events.size - 2).toString()
-            eventsNotShown += " More Events"
-            event3.text = eventsNotShown
+            setEvent(event3, events[2])
+            event4.visibility = View.VISIBLE
+            var eventsNotShown = (events.size - 3).toString()
+            event4.text = "+"+eventsNotShown
         }
     }
 

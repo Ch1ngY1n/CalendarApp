@@ -1,25 +1,23 @@
 package codewithcal.au.calendarappexample
 
 import android.view.View
-import codewithcal.au.calendarappexample.CalendarAdapter.OnItemListener
-import androidx.recyclerview.widget.RecyclerView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import java.time.LocalDate
-import kotlin.collections.ArrayList
 
-class CalendarViewHolder internal constructor(
+class YearMonthDailyViewHolder internal constructor(
     itemView: View,
-    onItemListener: OnItemListener,
+    onItemListener: YearMonthDailyAdapter.OnItemListener,
     days: ArrayList<LocalDate>
-) : RecyclerView.ViewHolder(itemView), View.OnClickListener,View.OnLongClickListener {
+) : RecyclerView.ViewHolder(itemView), View.OnClickListener,View.OnLongClickListener{
     private val days: ArrayList<LocalDate>
     val parentView: View
     val dayOfMonth: TextView
-    val event1:TextView
-    val event2:TextView
-    val event3:TextView
-    val event4:TextView
-    private val onItemListener: OnItemListener
+    val event1: TextView
+    val event2: TextView
+    val event3: TextView
+    val event4: TextView
+    private val onItemListener: CalendarAdapter.OnItemListener
     override fun onClick(view: View) {
         onItemListener.onItemClick(adapterPosition, days[adapterPosition])
     }
@@ -43,6 +41,4 @@ class CalendarViewHolder internal constructor(
         onItemListener.OnItemLongClick(adapterPosition,days[adapterPosition])
         return true
     }
-
-
 }

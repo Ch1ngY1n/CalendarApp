@@ -16,7 +16,7 @@ class EventAdapter(context: Context, events: List<Event?>?) :
         if (convertView == null) convertView =
             LayoutInflater.from(context).inflate(R.layout.event_cell, parent, false)
         val eventCellTV = convertView!!.findViewById<TextView>(R.id.eventCellTV)
-        val eventCellTV2 = convertView!!.findViewById<TextView>(R.id.eventCellTV2)
+        val eventCellTV2 = convertView.findViewById<TextView>(R.id.eventCellTV2)
         val eventCellTV3 = convertView.findViewById<TextView>(R.id.eventCellTV3)
         val eventTitle = event!!.name
         val eventTime = formattedTime(event.time)

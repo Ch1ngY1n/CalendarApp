@@ -1,16 +1,13 @@
 package codewithcal.au.calendarappexample
 
-import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -113,7 +110,6 @@ class MainActivity : AppCompatActivity(), OnItemListener {
         binding.calendarRecyclerView.adapter = calendarAdapter
     }
 
-
     fun previousMonthAction(view: View?) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate!!.minusMonths(1)
         setMonthView()
@@ -140,20 +136,37 @@ class MainActivity : AppCompatActivity(), OnItemListener {
         }
     }
 
-    override fun onItemClick(position: Int, date: LocalDate?) {
+    override fun onItemClick(position: Int, date: LocalDate) {
             CalendarUtils.selectedDate = date
             setMonthView()
     }
 
-    override fun OnItemLongClick(position: Int, date: LocalDate?) {
+    override fun OnItemLongClick(position: Int, date: LocalDate) {
         showDialog()
     }
     private fun showDialog(){
-        val yesNoDialog= YesNoDialog(this)
+        val yesNoDialog= YesNoDialog1(this)
         yesNoDialog.show()
     }
+
+
+
+
+//    fun weeklyAction(view: View?) {
+//        startActivity(Intent(this, WeekViewActivity::class.java))
+//    }
+}
+class YesNoDialog1(context: Context): Dialog(context){
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.event_dialog)
+        val dialog = Dialog(context)
+        dialog.window?.setBackgroundDrawableResource(R.drawable.dialog_bk)
+        setHourAdapter()
+    }
+
     private fun setHourAdapter() {
-        val hourAdapter = HourAdapter(applicationContext, hourEventList())
+        val hourAdapter = HourAdapter(context, hourEventList())
         val month_hourAdapter = findViewById<ListView>(R.id.month_hourListView)
         month_hourAdapter.adapter = hourAdapter
     }
@@ -169,19 +182,6 @@ class MainActivity : AppCompatActivity(), OnItemListener {
             }
         }
         return list
-    }
-
-
-
-
-//    fun weeklyAction(view: View?) {
-//        startActivity(Intent(this, WeekViewActivity::class.java))
-//    }
-}
-class YesNoDialog(context: Context): Dialog(context){
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.event_dialog)
     }
 
 }

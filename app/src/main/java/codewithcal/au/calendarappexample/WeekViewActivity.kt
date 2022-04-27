@@ -1,6 +1,7 @@
 package codewithcal.au.calendarappexample
 
-import android.app.AlertDialog
+import android.app.Dialog
+import android.content.Context
 import codewithcal.au.calendarappexample.CalendarUtils.monthYearFromDate
 import codewithcal.au.calendarappexample.CalendarUtils.daysInWeekArray
 import codewithcal.au.calendarappexample.Event.Companion.eventsForDate
@@ -12,16 +13,16 @@ import androidx.recyclerview.widget.GridLayoutManager
 import android.content.Intent
 import android.view.View
 import android.widget.ImageView
+import android.widget.ListView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.recyclerview.widget.LinearSnapHelper
 import codewithcal.au.calendarappexample.databinding.ActivityWeekViewBinding
 import com.bumptech.glide.Glide
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.navigation.NavigationView
 import java.time.LocalDate
+import java.time.LocalTime
 import java.util.*
 
 class WeekViewActivity : AppCompatActivity(), OnItemListener {
@@ -102,6 +103,8 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
         setEventAdpater()
     }
 
+
+
     fun previousWeekAction(view: View?) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate!!.minusWeeks(1)
         setWeekView()
@@ -112,18 +115,18 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
         setWeekView()
     }
 
-    override fun onItemClick(position: Int, date: LocalDate?) {
+    override fun onItemClick(position: Int, date: LocalDate) {
         CalendarUtils.selectedDate = date
         setWeekView()
     }
 
-    override fun OnItemLongClick(position: Int, date: LocalDate?) {
-        val builder = AlertDialog.Builder(this)
-            .create()
-        val view = layoutInflater.inflate(R.layout.event_dialog,null)
-        builder.setView(view)
-        builder.setCanceledOnTouchOutside(false)
-        builder.show()
+
+    override fun OnItemLongClick(position: Int, date: LocalDate) {
+        showDialog()
+    }
+    private fun showDialog(){
+        val yesNoDialog= YesNoDialog2(this)
+        yesNoDialog.show()
     }
 
     override fun onResume() {
@@ -138,9 +141,41 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
         val eventAdapter = EventAdapter(applicationContext, dailyEvents)
 
         binding.eventListView.setOnItemClickListener { adapterView, view, i, l ->
-            val msg = eventAdapter.getItem(i)
+            Event.eventsList.removeAt(i)
+            dailyEvents.removeAt(i)
+            setEventAdpater()
         }
+
         binding.eventListView.adapter = eventAdapter
+    }
+
+}
+class YesNoDialog2(context: Context): Dialog(context){
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.event_dialog)
+        val dialog = Dialog(context)
+        dialog.window?.setBackgroundDrawableResource(R.drawable.dialog_bk)
+        setHourAdapter()
+    }
+
+    private fun setHourAdapter() {
+        val hourAdapter = HourAdapter(context, hourEventList())
+        val month_hourAdapter = findViewById<ListView>(R.id.month_hourListView)
+        month_hourAdapter.adapter = hourAdapter
+    }
+    //0:00-23:00 一整天
+    private fun hourEventList(): ArrayList<HourEvent> {
+        val list = ArrayList<HourEvent>()
+        for (hour in 0..23) {
+            val time = LocalTime.of(hour, 0)
+            val events = CalendarUtils.selectedDate?.let { Event.eventsForDateAndTime(it, time) }
+            val hourEvent = events?.let { HourEvent(time, it) }
+            if (hourEvent != null) {
+                list.add(hourEvent)
+            }
+        }
+        return list
     }
 
 }
