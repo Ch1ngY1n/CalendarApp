@@ -17,7 +17,7 @@ class YearMonthDailyViewHolder internal constructor(
     val event2: TextView
     val event3: TextView
     val event4: TextView
-    private val onItemListener: CalendarAdapter.OnItemListener
+    private val onItemListener: YearMonthDailyAdapter.OnItemListener
     override fun onClick(view: View) {
         onItemListener.onItemClick(adapterPosition, days[adapterPosition])
     }
