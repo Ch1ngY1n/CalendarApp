@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import codewithcal.au.calendarappexample.CalendarUtils.YearFromMonth
 import codewithcal.au.calendarappexample.databinding.ActivityYearViewBinding
@@ -95,10 +96,10 @@ class YearViewActivity : AppCompatActivity() {
         for (i in 0..11){
             listMonths.add((i+1).toString())
         }
-        val yearCalendarAdapter = YearCalendarAdapter(listMonths)
+        val yearMonthAdapter = YearMonthAdapter(listMonths)
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(applicationContext, 3)
         binding.yearCalendarRecyclerView.layoutManager = layoutManager
-        binding.yearCalendarRecyclerView.adapter = yearCalendarAdapter
+        binding.yearCalendarRecyclerView.adapter = yearMonthAdapter
     }
     fun previousMonthAction(view: View?) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate!!.minusYears(1)
@@ -125,24 +126,4 @@ class YearViewActivity : AppCompatActivity() {
         }
     }
 
-}
-
-class YearCalendarAdapter(private val listMonths: ArrayList<String>)
-    : RecyclerView.Adapter<ViewHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.year_cell, parent, false)
-        return ViewHolder(v)
-    }
-
-    override fun getItemCount(): Int {
-        return listMonths.size
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.dataView.text = listMonths[position]+"月"
-    }
-}
-class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-    val dataView: TextView = v.findViewById(R.id.cellMonthText)
 }

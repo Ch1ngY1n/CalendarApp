@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity(), OnItemListener {
         setMonthView()
         onclickMenu()
         dayOfToday()
+        setDate()
         binding.navDrawer.BTNMainSignOut.setOnClickListener {
             signOut()
         }
@@ -108,6 +109,11 @@ class MainActivity : AppCompatActivity(), OnItemListener {
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(applicationContext, 7)
         binding.calendarRecyclerView.layoutManager = layoutManager
         binding.calendarRecyclerView.adapter = calendarAdapter
+    }
+    private fun setDate(){
+        binding.monthYearTV.setOnClickListener {
+
+        }
     }
 
     fun previousMonthAction(view: View?) {
