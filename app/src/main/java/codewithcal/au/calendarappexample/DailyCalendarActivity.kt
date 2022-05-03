@@ -1,5 +1,7 @@
 package codewithcal.au.calendarappexample
 
+import android.app.AlertDialog
+import android.app.DatePickerDialog
 import codewithcal.au.calendarappexample.CalendarUtils.monthDayFromDate
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
@@ -21,6 +23,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.navigation.NavigationView
 import java.time.LocalDate
 import java.time.LocalTime
+import java.time.ZoneId
 import java.time.format.TextStyle
 import java.util.*
 
@@ -34,6 +37,20 @@ class DailyCalendarActivity : AppCompatActivity() {
         setContentView(binding.root)
         dayOfToday()
         onclickMenu()
+        binding.monthDayText.setOnClickListener {
+            val c = Calendar.getInstance()
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+            DatePickerDialog(this, AlertDialog.THEME_HOLO_DARK,{ _, year, month, day->
+                c.set(Calendar.YEAR,year)
+                c.set(Calendar.MONTH,month)
+                c.set(Calendar.DAY_OF_MONTH,day)
+                binding.monthDayText.setText(""+ (month+1) +"月"+" "+day+"日")
+                selectedDate = c.time.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+                setDayView()
+            },year,month,day).show()
+        }
     }
 
     override fun onResume() {

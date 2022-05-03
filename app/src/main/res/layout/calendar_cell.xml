@@ -27,6 +27,7 @@
             android:padding="5dp">
 
             <TextView
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_margin="2dp"
@@ -40,6 +41,7 @@
                 android:text="高鐵乘車提醒:代號05154156,04/05台中-台北"/>
 
             <TextView
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_margin="2dp"
@@ -53,6 +55,7 @@
                 android:text="Event 2"/>
 
             <TextView
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_margin="2dp"
@@ -65,6 +68,7 @@
                 android:textColor="@color/black"
                 android:text="Event 3"/>
             <TextView
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_margin="5dp"

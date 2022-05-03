@@ -6,15 +6,15 @@ import java.util.*
 
 object CalendarUtils {
     @JvmField
-    var selectedDate: LocalDate? = null
+    var selectedDate: LocalDate? = LocalDate.now()
     @JvmStatic
     fun formattedToday(date: LocalDate): String {
-        val formatter = DateTimeFormatter.ofPattern("dd")
+        val formatter = DateTimeFormatter.ofPattern("d")
         return date.format(formatter)
     }
     @JvmStatic
     fun formattedDate(date: LocalDate): String {
-        val formatter = DateTimeFormatter.ofPattern("yyyy年 MMMM dd日")
+        val formatter = DateTimeFormatter.ofPattern("yyyy年 MMMM d日")
         return date.format(formatter)
     }
 
@@ -43,7 +43,7 @@ object CalendarUtils {
 
     @JvmStatic
     fun monthDayFromDate(date: LocalDate): String {
-        val formatter = DateTimeFormatter.ofPattern("MMMM d")
+        val formatter = DateTimeFormatter.ofPattern("MMMM d日")
         return date.format(formatter)
     }
 

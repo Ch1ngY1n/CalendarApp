@@ -1,5 +1,8 @@
 package codewithcal.au.calendarappexample
 
+import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
@@ -8,6 +11,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -24,7 +28,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.navigation.NavigationView
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.LocalTime
+import java.time.LocalTime.ofInstant
+import java.time.ZoneId
 import java.util.*
 
 class MainActivity : AppCompatActivity(), OnItemListener {
@@ -32,16 +39,30 @@ class MainActivity : AppCompatActivity(), OnItemListener {
     lateinit var mGoogleSignInClient: GoogleSignInClient
     private var flag = 0
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        CalendarUtils.selectedDate = LocalDate.now()
         //設定日曆(月)
         setMonthView()
         onclickMenu()
         dayOfToday()
         setDate()
+        binding.monthYearTV.setOnClickListener {
+            val c = Calendar.getInstance()
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+            DatePickerDialog(this,AlertDialog.THEME_HOLO_DARK,{ _, year, month, day->
+                c.set(Calendar.YEAR,year)
+                c.set(Calendar.MONTH,month)
+                c.set(Calendar.DAY_OF_MONTH,day)
+                binding.monthYearTV.setText(""+ (month+1) +"月"+" "+year)
+                CalendarUtils.selectedDate = c.time.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+                setMonthView()
+            },year,month,day).show()
+        }
         binding.navDrawer.BTNMainSignOut.setOnClickListener {
             signOut()
         }
@@ -59,7 +80,7 @@ class MainActivity : AppCompatActivity(), OnItemListener {
     }
     private fun dayOfToday(){
         //今天日期
-        binding.navMain.ucNavLayoutRight.text = formattedToday(CalendarUtils.selectedDate!!)
+        binding.navMain.ucNavLayoutRight.text = formattedToday(LocalDate.now())
 
         //回到今天日期
         binding.navMain.ucNavLayoutRight.setOnClickListener {

@@ -1,5 +1,7 @@
 package codewithcal.au.calendarappexample
 
+import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
 import codewithcal.au.calendarappexample.CalendarUtils.monthYearFromDate
@@ -23,6 +25,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.navigation.NavigationView
 import java.time.LocalDate
 import java.time.LocalTime
+import java.time.ZoneId
 import java.util.*
 
 class WeekViewActivity : AppCompatActivity(), OnItemListener {
@@ -37,6 +40,21 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
         setWeekView()
         dayOfToday()
         onclickMenu()
+        binding.monthYearTV.setOnClickListener {
+            val c = Calendar.getInstance()
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+            DatePickerDialog(this, AlertDialog.THEME_HOLO_DARK,{ _, year, month, day->
+                c.set(Calendar.YEAR,year)
+                c.set(Calendar.MONTH,month)
+                c.set(Calendar.DAY_OF_MONTH,day)
+                binding.monthYearTV.setText(""+ (month+1) +"月"+" "+year)
+                CalendarUtils.selectedDate = c.time.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+                setWeekView()
+            },year,month,day).show()
+        }
+
     }
     private fun dayOfToday(){
         //今天日期
@@ -140,6 +158,7 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
         )
         val eventAdapter = EventAdapter(applicationContext, dailyEvents)
 
+
         binding.eventListView.setOnItemClickListener { adapterView, view, i, l ->
             Event.eventsList.removeAt(i)
             dailyEvents.removeAt(i)
@@ -148,7 +167,23 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
 
         binding.eventListView.adapter = eventAdapter
     }
+    private fun showDeleteDialog(){
+        val deleteDialog= DeleteDialog(this)
+        deleteDialog.show()
+    }
+    private fun dismissDeleteDialog(){
+        val deleteDialog= DeleteDialog(this)
+        deleteDialog.dismiss()
+    }
 
+}
+class DeleteDialog(context: Context):Dialog(context){
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.delete_dialog)
+        val dialog = Dialog(context)
+        dialog.window?.setBackgroundDrawableResource(R.drawable.dialog_bk)
+    }
 }
 class YesNoDialog2(context: Context): Dialog(context){
     override fun onCreate(savedInstanceState: Bundle?) {
