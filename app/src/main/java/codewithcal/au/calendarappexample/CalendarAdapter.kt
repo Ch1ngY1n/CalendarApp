@@ -1,5 +1,6 @@
 package codewithcal .au.calendarappexample
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -38,11 +39,20 @@ class CalendarAdapter(
         if (myDate.month != CalendarUtils.selectedDate!!.month) {
             holder.parentView.setBackgroundResource(R.color.deep_gray)
             holder.dayOfMonth.setText("")
-            holder.event1.visibility = View.INVISIBLE
-            holder.event2.visibility = View.INVISIBLE
-            holder.event3.visibility = View.INVISIBLE
-            holder.event4.visibility = View.INVISIBLE
         }
+        if (position == 0) holder.dayOfMonth.setTextColor(Color.RED)
+        if (position == 7) holder.dayOfMonth.setTextColor(Color.RED)
+        if (position == 14) holder.dayOfMonth.setTextColor(Color.RED)
+        if (position == 21) holder.dayOfMonth.setTextColor(Color.RED)
+        if (position == 28) holder.dayOfMonth.setTextColor(Color.RED)
+        if (position == 35) holder.dayOfMonth.setTextColor(Color.RED)
+
+        if (position == 6) holder.dayOfMonth.setTextColor(Color.YELLOW)
+        if (position == 13) holder.dayOfMonth.setTextColor(Color.YELLOW)
+        if (position == 20) holder.dayOfMonth.setTextColor(Color.YELLOW)
+        if (position == 27) holder.dayOfMonth.setTextColor(Color.YELLOW)
+        if (position == 34) holder.dayOfMonth.setTextColor(Color.YELLOW)
+        if (position == 41) holder.dayOfMonth.setTextColor(Color.YELLOW)
 
     }
 

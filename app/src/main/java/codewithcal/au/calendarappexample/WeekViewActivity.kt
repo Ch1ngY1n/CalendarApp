@@ -154,14 +154,15 @@ class WeekViewActivity : AppCompatActivity(), OnItemListener {
 
     private fun setEventAdpater() {
         val dailyEvents: ArrayList<Event> = eventsForDate(
-            CalendarUtils.selectedDate!!
-        )
+            CalendarUtils.selectedDate!!)
         val eventAdapter = EventAdapter(applicationContext, dailyEvents)
 
 
         binding.eventListView.setOnItemClickListener { adapterView, view, i, l ->
-            Event.eventsList.removeAt(i)
-            dailyEvents.removeAt(i)
+            Event.eventsList.sortBy { Event->Event.time }
+            Event.eventsList.removeAt(i) //畫面上點的list
+            dailyEvents.sortBy { Event->Event.time }
+            dailyEvents.removeAt(i)//資料list
             setEventAdpater()
         }
 

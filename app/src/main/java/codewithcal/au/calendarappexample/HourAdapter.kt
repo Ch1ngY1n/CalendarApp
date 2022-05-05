@@ -26,17 +26,14 @@ class HourAdapter(context: Context, hourEvents: List<HourEvent?>?) :
         val TV_event2 = convertView.findViewById<TextView>(R.id.event2)
         val TV_event3 = convertView.findViewById<TextView>(R.id.event3)
         TV_event1.setOnClickListener {
-            Event.eventsList.removeAt(0)
             event.events.removeAt(0)
             setEvents(convertView, event.events)
         }
         TV_event2.setOnClickListener {
-            Event.eventsList.removeAt(1)
             event.events.removeAt(1)
             setEvents(convertView, event.events)
         }
         TV_event3.setOnClickListener {
-            Event.eventsList.removeAt(2)
             event.events.removeAt(2)
             setEvents(convertView, event.events)
         }

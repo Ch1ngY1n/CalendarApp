@@ -94,57 +94,12 @@
                 android:textSize="15sp"
                 android:textColor="@color/white"/>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/BTN_main_notification"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:drawableLeft="@drawable/menu_notification"
-                android:drawablePadding="10dp"
-                android:text="提醒"
-                android:gravity="start"
-                android:padding="10dp"
-                android:textSize="15sp"
-                android:textColor="@color/white"/>
-        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="........................................................."
-                android:gravity="center"
-                android:textSize="15sp"
-                android:textColor="@color/yellow"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/BTN_main_delete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:drawableLeft="@drawable/menu_delete"
-                android:drawablePadding="10dp"
-                android:text="垃圾桶"
-                android:gravity="start"
-                android:padding="10dp"
-                android:textSize="15sp"
-                android:textColor="@color/white"/>
-        </LinearLayout>
+            android:orientation="vertical"/>
 
     </LinearLayout>
     <LinearLayout

@@ -15,13 +15,16 @@ class EventAdapter(context: Context, events: List<Event?>?) :
         val event = getItem(position)
         if (convertView == null) convertView =
             LayoutInflater.from(context).inflate(R.layout.event_cell, parent, false)
-        val eventCellTV = convertView!!.findViewById<TextView>(R.id.eventCellTV)
+        val eventCellTV0 = convertView!!.findViewById<TextView>(R.id.eventCellTV0)
+        val eventCellTV1 = convertView.findViewById<TextView>(R.id.eventCellTV1)
         val eventCellTV2 = convertView.findViewById<TextView>(R.id.eventCellTV2)
         val eventCellTV3 = convertView.findViewById<TextView>(R.id.eventCellTV3)
         val eventTitle = event!!.name
         val eventTime = formattedTime(event.time)
         val eventRemark = event.remark
-        eventCellTV.text = eventTitle
+        val eventNoti = event.noti.substring(3,4)
+        eventCellTV0.text = eventNoti
+        eventCellTV1.text = eventTitle
         eventCellTV2.text = eventTime
         eventCellTV3.text = eventRemark
         return convertView

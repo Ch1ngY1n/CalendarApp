@@ -4,7 +4,7 @@ import java.time.LocalDate
 import java.time.LocalTime
 import java.util.*
 
-class Event(var name: String, var date: LocalDate, var time: LocalTime,var remark:String) {
+class Event(var name: String, var date: LocalDate, var time: LocalTime,var remark:String,var noti:String) {
 
     companion object {
         @JvmField
@@ -14,6 +14,7 @@ class Event(var name: String, var date: LocalDate, var time: LocalTime,var remar
             val events = ArrayList<Event>()
             for (event in eventsList) {
                 if (event.date == date) events.add(event)
+                events.sortBy { Event->Event.time }
             }
             return events
         }
@@ -24,6 +25,7 @@ class Event(var name: String, var date: LocalDate, var time: LocalTime,var remar
                 val eventHour = event.time.hour
                 val cellHour = time.hour
                 if (event.date == date && eventHour == cellHour) events.add(event)
+                events.sortBy { Event->Event.time }
             }
             return events
         }

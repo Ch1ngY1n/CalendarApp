@@ -37,8 +37,6 @@ import java.util.*
 class MainActivity : AppCompatActivity(), OnItemListener {
     private lateinit var binding: ActivityMainBinding
     lateinit var mGoogleSignInClient: GoogleSignInClient
-    private var flag = 0
-
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
